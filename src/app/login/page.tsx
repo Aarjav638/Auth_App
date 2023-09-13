@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState ,useEffect} from 'react';
 import axios from 'axios';
 
-const login = () => {
+const Login = () => {
   const router=useRouter();
     const [user,setuser]= useState({
         email:"",
@@ -30,10 +30,10 @@ const login = () => {
        const response=await axios.post("/api/users/login",user);
        const res = await axios.get('/api/users/profile')
         console.log("response", res.data);
-       console.log("login success",res.data.data.username);
+       console.log("Login success",res.data.data.username);
        router.push('/profile/'+res.data.data.username);
     } catch (error:any) {
-        console.log("login Failed",error.message)
+        console.log("Login Failed",error.message)
     }
     finally{
         setloading(false)
@@ -58,10 +58,10 @@ const login = () => {
             onChange={(e)=>setuser({...user,password:e.target.value})}
             placeholder='password'
             className='p-2 rounded border border-slate-400 bg-slate-300 text-sky-700 m-4'/>
-            <button className={`p-2 rounded border border-slate-400 bg-slate-300 text-sky-700 m-4 focus:bg-slate-500 hover:bg-slate-500 ${visibility}`} type='button' onClick={onLogin}>{buttondisabled?"no login":"login"}</button>
+            <button className={`p-2 rounded border border-slate-400 bg-slate-300 text-sky-700 m-4 focus:bg-slate-500 hover:bg-slate-500 ${visibility}`} type='button' onClick={onLogin}>{buttondisabled?"no Login":"Login"}</button>
             <p>Not registered.<span className=' text-sky-700 text-[15px]'><Link href="/signup">Signup</Link></span></p>
         </div>
     )
 }
 
-export default login
+export default Login

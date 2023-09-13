@@ -4,7 +4,7 @@ import axios from 'axios'
 import Link from 'next/link'
 import { NextResponse } from 'next/server'
 import { useRouter } from 'next/navigation'
-const profile = () => {
+const Profile = () => {
   const [data, setdata] = useState("nothing");
   const router = useRouter();
   const logout = async () => {
@@ -35,5 +35,5 @@ const profile = () => {
   )
 }
 
-export default profile
+export default Profile
 
